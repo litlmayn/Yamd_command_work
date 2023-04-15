@@ -127,7 +127,7 @@ class ReviewViewset(viewsets.ModelViewSet):
     pagination_class = PageNumberPagination
 
     def get_title(self):
-        """Достаем произведение."""
+        """Достаем произведение"""
         return get_object_or_404(Title, id=self.kwargs.get('title_id'))
 
     def get_queryset(self):
