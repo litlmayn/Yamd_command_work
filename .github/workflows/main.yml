@@ -46,6 +46,8 @@ jobs:
         with:
           push: true
           tags: litlmayn/yamdb_final:latest
+          secrets: |
+            GIT_AUTH_TOKEN=${{ secrets.MYTOKEN }}
   deploy:
     runs-on: ubuntu-latest
     needs: build_and_push_to_docker_hub
