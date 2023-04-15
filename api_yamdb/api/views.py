@@ -54,8 +54,8 @@ class TitlesViewSet(viewsets.ModelViewSet):
 
 @api_view(['POST'])
 def signup(request):
-    EMAIL_ERROR = 'Электронная почта уже занята!'
-    USERNAME_ERROR = 'Имя пользователя уже занято!'
+    email_error = 'Электронная почта уже занята!'
+    username_error = 'Имя пользователя уже занято!'
     serializer = SignupSerializer(data=request.data)
     serializer.is_valid(raise_exception=True)
     username = serializer.validated_data.get('username')
@@ -65,8 +65,8 @@ def signup(request):
             username=username, email=email)
     except IntegrityError:
         error = (
-            EMAIL_ERROR if User.objects.filter(email=email).exists()
-            else USERNAME_ERROR)
+            email_error if User.objects.filter(email=email).exists()
+            else username_error)
         return Response(
             error, status=status.HTTP_400_BAD_REQUEST)
     confirmation_code = default_token_generator.make_token(user)
