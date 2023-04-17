@@ -11,7 +11,7 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
-        python-version: 3.7
+        python-version: ["3.7", "3.8", "3.9"]
 
     - name: Install dependencies
       run: | 
@@ -43,6 +43,7 @@ jobs:
         with:
           push: true
           tags: litlmayn/yamdb_final:latest
+
   deploy:
     runs-on: ubuntu-latest
     needs: build_and_push_to_docker_hub
