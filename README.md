@@ -1,4 +1,4 @@
-![Yamdb Workflow Status](https://github.com/themasterid/yamdb_final/actions/workflows/yamdb_workflow.yml/badge.svg?branch=master&event=push)
+![Yamdb Workflow Status](https://github.com/litlmayn/yamdb_final/actions/workflows/yamdb_workflow.yml/badge.svg?branch=master&event=push)
 ### Проект Yamdb - это проект, направленный на оценку любых произведений!
 
 ```
