@@ -11,9 +11,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.getenv('SECRET_KEY', 'p&l%385148kslhtyn^##a1)ilz@4zqj=rq&agdol^##zgl9(vs')
 
-DEBUG = False
+DEBUG = os.getenv('FLAG', False)
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = [os.getenv('HOST', '*')]
 
 MAX_LENGHT = 256
 SLUG_MAX_LENGHT = 50
@@ -70,17 +70,24 @@ WSGI_APPLICATION = 'api_yamdb.wsgi.application'
 
 
 # Database
-
-DATABASES = {
-    'default': {
-        'ENGINE': os.getenv('DB_ENGINE', default='django.db.backends.postgresql'),
-        'NAME': os.getenv('DB_NAME', default='postgres'),
-        'USER': os.getenv('POSTGRES_USER', default='user'),
-        'PASSWORD': os.getenv('POSTGRES_PASSWORD', default='Parol1234'),
-        'HOST': os.getenv('DB_HOST', default='db'),
-        'PORT': os.getenv('DB_PORT', default='5432')
+if os.getenv('FLAG'):
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
     }
-}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': os.getenv('DB_ENGINE', default='django.db.backends.postgresql'),
+            'NAME': os.getenv('DB_NAME', default='postgres'),
+            'USER': os.getenv('POSTGRES_USER', default='user'),
+            'PASSWORD': os.getenv('POSTGRES_PASSWORD', default='Parol1234'),
+            'HOST': os.getenv('DB_HOST', default='db'),
+            'PORT': os.getenv('DB_PORT', default='5432')
+        }
+    }
 
 
 AUTH_PASSWORD_VALIDATORS = [
