@@ -13,7 +13,7 @@ SECRET_KEY = os.getenv('SECRET_KEY', 'p&l%385148kslhtyn^##a1)ilz@4zqj=rq&agdol^#
 
 DEBUG = False
 
-ALLOWED_HOSTS = [os.getenv('HOST', '*')]
+ALLOWED_HOSTS = ['*']
 
 MAX_LENGHT = 256
 SLUG_MAX_LENGHT = 50
