@@ -11,7 +11,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.getenv('SECRET_KEY', 'p&l%385148kslhtyn^##a1)ilz@4zqj=rq&agdol^##zgl9(vs')
 
-DEBUG = os.getenv('FLAG', False)
+DEBUG = os.getenv('DEBUG_FLAG', False)
 
 ALLOWED_HOSTS = [os.getenv('HOST', '*')]
 
@@ -70,7 +70,7 @@ WSGI_APPLICATION = 'api_yamdb.wsgi.application'
 
 
 # Database
-if os.getenv('FLAG'):
+if os.getenv('DB_FLAG'):
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
